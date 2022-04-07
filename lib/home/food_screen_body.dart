@@ -5,7 +5,6 @@ import 'package:e_commerce/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/services.dart';
 
 class FoodScreenBody extends StatefulWidget {
   const FoodScreenBody({Key? key}) : super(key: key);
@@ -67,7 +66,7 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              mBigText(text: "Popular", size: Dimension.font20),
+              mBigText(text: "Popular"),
               SizedBox(width: Dimension.width10),
               Container(
                 margin: EdgeInsets.only(bottom: 3),
@@ -85,6 +84,79 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
             ],
           ),
         ),
+        //list of foods
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index){
+          return Container(
+            margin: EdgeInsets.only(left: Dimension.width20, right: Dimension.width20, bottom: Dimension.height10),
+            child: Row(
+              children: [
+                //image
+                Container(
+                  width: Dimension.listViewImgSize,
+                  height: Dimension.listViewImgSize,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimension.radius20),
+                    color: Colors.white38,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        "assets/image/food0.png"
+                      ),
+                    )
+                  ),
+                ),
+                //text
+                Expanded(
+                  child: Container(
+                    height: Dimension.listViewTextContSize,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(Dimension.radius20),
+                        bottomRight: Radius.circular(Dimension.radius20),
+                      ),
+                      color: Colors.white
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: Dimension.width10, right: Dimension.width10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          mBigText(text: "Nutrutious fruit meal in China"),
+                          SizedBox(height: Dimension.height10),
+                          mSmallText(text: "With Chinese characteristics"),
+                          SizedBox(height: Dimension.height10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconAndTextWidget(
+                                  icon: Icons.circle_sharp,
+                                  text: "normal",
+                                  iconColor: AppColors.iconColor1),
+                              IconAndTextWidget(
+                                  icon: Icons.location_on,
+                                  text: "1.7",
+                                  iconColor: AppColors.mainColor),
+                              IconAndTextWidget(
+                                  icon: Icons.access_time_rounded,
+                                  text: "32min",
+                                  iconColor: AppColors.iconColor2),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        )
       ],
     );
   }
