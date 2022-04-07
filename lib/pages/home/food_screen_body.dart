@@ -1,10 +1,13 @@
-import 'package:e_commerce/utils/colors.dart';
-import 'package:e_commerce/utils/dimension.dart';
-import 'package:e_commerce/widgets/big_text.dart';
-import 'package:e_commerce/widgets/icon_and_text_widget.dart';
-import 'package:e_commerce/widgets/small_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+
+import '../../utils/colors.dart';
+import '../../utils/dimension.dart';
+import '../../widgets/app_column.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/icon_and_text_widget.dart';
+import '../../widgets/small_text.dart';
 
 class FoodScreenBody extends StatefulWidget {
   const FoodScreenBody({Key? key}) : super(key: key);
@@ -77,10 +80,7 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
                 ),
               ),
               SizedBox(width: Dimension.width10),
-              Container(
-                  margin: EdgeInsets.only(bottom: 2),
-                  child: mSmallText(text: "Food pairing"),
-              ),
+              mSmallText(text: "Food pairing"),
             ],
           ),
         ),
@@ -156,7 +156,7 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
             ),
           );
         },
-        )
+        ),
       ],
     );
   }
@@ -232,51 +232,7 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
               child: Container(
                 padding: EdgeInsets.only(
                     top: Dimension.height15, left: 15, right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    mBigText(
-                      text: "Chinese Side",
-                      size: Dimension.font20,
-                    ),
-                    SizedBox(height: Dimension.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(5, (index) {
-                            return Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: 15,
-                            );
-                          }),
-                        ),
-                        SizedBox(width: 10),
-                        mSmallText(text: "4.5"),
-                        SizedBox(width: 10),
-                        mSmallText(text: '1234 Comments'),
-                      ],
-                    ),
-                    SizedBox(height: Dimension.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconAndTextWidget(
-                            icon: Icons.circle_sharp,
-                            text: "normal",
-                            iconColor: AppColors.iconColor1),
-                        IconAndTextWidget(
-                            icon: Icons.location_on,
-                            text: "1.7",
-                            iconColor: AppColors.mainColor),
-                        IconAndTextWidget(
-                            icon: Icons.access_time_rounded,
-                            text: "32min",
-                            iconColor: AppColors.iconColor2),
-                      ],
-                    ),
-                  ],
-                ),
+                child: AppColumn(text: "Chinese Side"),
               ),
             ),
           ),

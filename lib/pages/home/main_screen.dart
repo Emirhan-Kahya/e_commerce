@@ -1,9 +1,11 @@
-import 'package:e_commerce/home/food_screen_body.dart';
 import 'package:e_commerce/utils/colors.dart';
 import 'package:e_commerce/utils/dimension.dart';
 import 'package:e_commerce/widgets/big_text.dart';
 import 'package:e_commerce/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+
+import 'food_screen_body.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
