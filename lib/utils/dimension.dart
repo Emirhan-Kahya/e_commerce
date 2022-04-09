@@ -10,35 +10,34 @@ class Dimension{
   static double pageView = screenHeight / 2.64;
 
   //height
-  static double height10 = screenHeight / 73.7;
-  static double height15 = screenHeight / 49.13;
-  static double height20 = screenHeight / 38.35;
-  static double height30 = screenHeight / 25.56;
-  static double height45 = screenHeight / 17.04;
+  static double height10 = screenHeight / 84.4;
+  static double height15 = screenHeight / 56.27;
+  static double height20 = screenHeight / 42.2;
+  static double height30 = screenHeight / 28.13;
+  static double height45 = screenHeight / 18.7;
 
   //width
-  static double width10 = screenHeight / 73.7;
-  static double width15 = screenHeight / 49.13;
-  static double width20 = screenHeight / 38.35;
-  static double width30 = screenHeight / 25.56;
-  static double width45 = screenHeight / 17.04;
+  static double width10 = screenHeight / 84.4;
+  static double width15 = screenHeight / 56.27;
+  static double width20 = screenHeight / 42.2;
+  static double width30 = screenHeight / 28.13;
+  static double width45 = screenHeight / 18.7;
 
   //font
-  static double font12 = screenHeight / 63.91;
+  static double font12 = screenHeight / 70.2;
   static double font16 = screenHeight / 47.94;
-  static double font20 = screenHeight / 38.35;
+  static double font20 = screenHeight / 42.2;
   static double font26 = screenHeight / 29.5;
 
 
   //radius
-  static double radius15 = screenHeight / 49.13;
-  static double radius20 = screenHeight / 38.35;
-  static double radius30 = screenHeight / 25.56;
+  static double radius15 = screenHeight / 56.27;
+  static double radius20 = screenHeight / 42.2;
+  static double radius30 = screenHeight / 28.13;
 
   //icon
   static double icon16 = screenHeight / 47.93;
-  static double icon24 = screenHeight / 31.95;
-
+  static double icon24 = screenHeight / 35.7;
   //listview
   static double listViewImgSize = screenWidth / 3.25;
   static double listViewTextContSize = screenWidth / 3.9;

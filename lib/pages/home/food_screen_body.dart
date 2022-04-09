@@ -1,6 +1,8 @@
 
+import 'package:e_commerce/controllers/popular_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:get/get.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimension.dart';
@@ -41,27 +43,32 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
     return Column(
       children: [
         //slider section
-        Container(
-          height: Dimension.pageView,
-          child: PageView.builder(
-            controller: pageController,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return _buildPageItem(index);
-            },
-          ),
-        ),
+        GetBuilder<PopularProductController>(builder:(popularProducts){
+          return Container(
+            height: Dimension.pageView,
+            child: PageView.builder(
+              controller: pageController,
+              itemCount: popularProducts.popularProductList.length,
+              itemBuilder: (context, index) {
+                return _buildPageItem(index);
+              },
+            ),
+          );
+        }),
         //dots
-        new DotsIndicator(
-          dotsCount: 5,
-          position: _currentPage,
-          decorator: DotsDecorator(
-              size: const Size.square(9.0),
-              activeSize: const Size(18.0, 9.0),
-              activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
-              activeColor: AppColors.mainColor),
-        ),
+        GetBuilder<PopularProductController>(builder: (popularProducts){
+          return DotsIndicator(
+            dotsCount: popularProducts.popularProductList.length,
+            position: _currentPage,
+            decorator: DotsDecorator(
+                size: const Size.square(9.0),
+                activeSize: const Size(18.0, 9.0),
+                activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                activeColor: AppColors.mainColor),
+          );
+        }),
+
         //popular text
         SizedBox(height: Dimension.height30),
         Container(
