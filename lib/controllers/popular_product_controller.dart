@@ -1,5 +1,7 @@
-import 'package:e_commerce/data/repository/popular_product_repo.dart';
 import 'package:get/get.dart';
+
+import '../models/products_model.dart';
+import '../data/repository/popular_product_repo.dart';
 
 
 class PopularProductController extends GetxController{
@@ -8,7 +10,19 @@ class PopularProductController extends GetxController{
   PopularProductController({required this.popularProductRepo});
 
   List<dynamic> _popularProductList = [];
+  List<dynamic> get popularProductList => _popularProductList;
 
+  Future<void> getPopularProductList() async{
+    Response response = await popularProductRepo.getPopularProductList();
+    if(response.statusCode == 200){
+      print("got data");
+      _popularProductList = [];
+      _popularProductList.addAll(Product.fromJson(response.body).products);
+      print(_popularProductList);
+      update();
+    }
+    else{
 
-
+    }
+  }
 }
