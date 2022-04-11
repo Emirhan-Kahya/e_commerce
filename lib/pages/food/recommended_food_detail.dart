@@ -1,24 +1,37 @@
+import 'package:e_commerce/controllers/recommended_product_controller.dart';
+import 'package:e_commerce/routes/route_helper.dart';
 import 'package:e_commerce/utils/colors.dart';
 import 'package:e_commerce/utils/dimension.dart';
 import 'package:e_commerce/widgets/app_icon.dart';
 import 'package:e_commerce/widgets/big_text.dart';
 import 'package:e_commerce/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../utils/app_constants.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int recommended;
+  const RecommendedFoodDetail({Key? key, required this.recommended}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>().recommendedProductList[recommended];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            toolbarHeight: 80,
+            automaticallyImplyLeading: false,
+            toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap:(){
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: AppIcon(icon: Icons.clear),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -27,7 +40,7 @@ class RecommendedFoodDetail extends StatelessWidget {
               child: Container(
                 child: Center(
                   child: mBigText(
-                    text: "Chinese Side",
+                    text: product.name!,
                     size: Dimension.font26,
                   ),
                 ),
@@ -46,8 +59,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/food0.png",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -58,8 +71,8 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 Container(
                   child: ExpandableText(
-                      text:
-                          "Chicken marinated with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then par bioled lightly spiced rice.Chicken marinated with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then par bioled lightly spiced rice.Chicken marinated with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then par bioled lightly spiced rice."),
+                      text: product.description!
+                  ),
                   margin: EdgeInsets.symmetric(horizontal: Dimension.width20),
                 ),
               ],
@@ -85,7 +98,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   iconSize: Dimension.icon24,
                 ),
                 mBigText(
-                  text: "\$12.88 " + " x " " 0 ",
+                  text: "\$ ${product.price} " + " x " " 0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimension.font26,
                 ),
@@ -114,10 +127,11 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(
-                      vertical: Dimension.height20, horizontal: Dimension.width20),
+                      vertical: Dimension.height20,
+                      horizontal: Dimension.width20),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimension.radius20),
-                      color: Colors.white,
+                    borderRadius: BorderRadius.circular(Dimension.radius20),
+                    color: Colors.white,
                   ),
                   child: Icon(
                     Icons.favorite,
@@ -126,11 +140,13 @@ class RecommendedFoodDetail extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dimension.width20, vertical: Dimension.height20),
+                      horizontal: Dimension.width20,
+                      vertical: Dimension.height20),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimension.radius20),
                       color: AppColors.mainColor),
-                  child: mBigText(text: "\$10 | Add to cart", color: Colors.white),
+                  child:
+                      mBigText(text: "\$Total Price | Add to cart", color: Colors.white),
                 ),
               ],
             ),
