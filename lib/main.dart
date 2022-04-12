@@ -1,3 +1,4 @@
+import 'package:e_commerce/pages/cart/cart_page.dart';
 import 'package:e_commerce/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
