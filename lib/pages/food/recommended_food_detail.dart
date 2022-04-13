@@ -14,12 +14,13 @@ import '../../utils/app_constants.dart';
 import '../cart/cart_page.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  final int recommended;
-  const RecommendedFoodDetail({Key? key, required this.recommended}) : super(key: key);
+  final int pageId;
+  final String page;
+  RecommendedFoodDetail({Key? key, required this.pageId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<RecommendedProductController>().recommendedProductList[recommended];
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
     Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
 
     return Scaffold(
@@ -32,20 +33,25 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap:(){
-                    Get.toNamed(RouteHelper.getInitial());
+                  onTap: () {
+                    if(page == "cartpage"){
+                      Get.toNamed(RouteHelper.getCartPage());
+                    }
+                    else{
+                      Get.toNamed(RouteHelper.getInitial());
+                    }
                   },
                   child: AppIcon(icon: Icons.clear),
                 ),
                 GetBuilder<PopularProductController>(builder: (controller) {
                   return GestureDetector(
                     onTap: (){
-                      Get.to(()=>CartPage());
+                      Get.toNamed(RouteHelper.cartPage);
                     },
                     child: Stack(
                       children: [
                         AppIcon(icon: Icons.shopping_cart_outlined),
-                        Get.find<PopularProductController>().totalItems >= 1
+                        controller.totalItems >= 1
                             ? Positioned(
                           right:0,
                           top:0,

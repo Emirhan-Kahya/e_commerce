@@ -7,6 +7,7 @@ import 'package:e_commerce/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../routes/route_helper.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimension.dart';
 import '../../widgets/app_icon.dart';
@@ -15,7 +16,8 @@ import '../../widgets/big_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
-  const PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
+  final String page;
+  const PopularFoodDetail({Key? key, required this.pageId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +57,24 @@ class PopularFoodDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => MainScreen());
+                    if(page == "cartpage"){
+                      Get.toNamed(RouteHelper.getCartPage());
+                    }
+                    else{
+                      Get.toNamed(RouteHelper.getInitial());
+                    }
                   },
                   child: AppIcon(icon: Icons.arrow_back_ios),
                 ),
                 GetBuilder<PopularProductController>(builder: (controller) {
                   return GestureDetector(
                     onTap: (){
-                      Get.to(()=>CartPage());
+                      Get.toNamed(RouteHelper.getCartPage());
                     },
                     child: Stack(
                       children: [
                         AppIcon(icon: Icons.shopping_cart_outlined),
-                        Get.find<PopularProductController>().totalItems >= 1
+                        controller.totalItems >= 1
                             ? Positioned(
                               right:0,
                               top:0,

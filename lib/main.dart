@@ -23,8 +23,7 @@ class MainPage extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery',
-      home: MainScreen(),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
     );
   }
