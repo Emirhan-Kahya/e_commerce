@@ -1,5 +1,7 @@
+import 'package:e_commerce/pages/cart/cart_history.dart';
 import 'package:e_commerce/pages/home/main_screen.dart';
 import 'package:e_commerce/utils/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+
+
   List pages = [
     MainScreen(),
     Container(
@@ -18,11 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text("Next Page 1"),
       ),
     ),
-    Container(
-      child: Center(
-        child: Text("Next Page 2"),
-      ),
-    ),
+    CartHistory(),
     Container(
       child: Center(
         child: Text("Next Page 3"),
@@ -35,6 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
