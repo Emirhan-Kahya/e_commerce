@@ -42,6 +42,17 @@ class CartHistory extends StatelessWidget {
 
     var listCounter = 0;
 
+    Widget timeWidget(int index) {
+      var outputDate = DateTime.now().toString();
+      if(index<getCartHistoryList.length){
+        DateTime parseDate = DateFormat("yyyy-MM-dd HH:mm:ss").parse(getCartHistoryList[listCounter].time!);
+        var inputDate = DateTime.parse(parseDate.toString());
+        var outputFormat = DateFormat("MM/dd/yyyy hh:mm a");
+        outputDate = outputFormat.format(inputDate);
+      }
+      return mBigText(text: outputDate.toString());
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -87,19 +98,7 @@ class CartHistory extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    (() {
-                                      DateTime parseDate = DateFormat(
-                                              "yyyy-MM-dd HH:mm:ss")
-                                          .parse(getCartHistoryList[listCounter]
-                                              .time!);
-                                      var inputDate =
-                                          DateTime.parse(parseDate.toString());
-                                      var outputFormat =
-                                          DateFormat("MM/dd/yyyy hh:mm a");
-                                      var outputDate =
-                                          outputFormat.format(inputDate);
-                                      return mBigText(text: outputDate);
-                                    }()),
+                                    timeWidget(listCounter),
                                     SizedBox(height: Dimension.height10),
                                     Row(
                                       mainAxisAlignment:
@@ -234,7 +233,13 @@ class CartHistory extends StatelessWidget {
                       ),
                     ),
                   )
-                : NoDataPage(text: "You didn't buy anything so far!", imgPath: "assets/image/empty_box.png",);
+                : Container(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    child: NoDataPage(
+                      text: "You didn't buy anything so far!",
+                      imgPath: "assets/image/empty_box.png",
+                    ),
+                  );
           }),
         ],
       ),

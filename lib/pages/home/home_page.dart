@@ -1,3 +1,5 @@
+import 'package:e_commerce/pages/account/account_page.dart';
+import 'package:e_commerce/pages/auth/sign_up_page.dart';
 import 'package:e_commerce/pages/cart/cart_history.dart';
 import 'package:e_commerce/pages/home/main_screen.dart';
 import 'package:e_commerce/utils/colors.dart';
@@ -17,17 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List pages = [
     MainScreen(),
-    Container(
-      child: Center(
-        child: Text("Next Page 1"),
-      ),
-    ),
+    SignUpPage(),
     CartHistory(),
-    Container(
-      child: Center(
-        child: Text("Next Page 3"),
-      ),
-    ),
+    AccountPage(),
   ];
 
   void onTap(int index){
