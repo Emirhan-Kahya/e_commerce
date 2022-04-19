@@ -1,10 +1,11 @@
 import 'package:e_commerce/pages/account/account_page.dart';
-import 'package:e_commerce/pages/auth/sign_up_page.dart';
 import 'package:e_commerce/pages/cart/cart_history.dart';
 import 'package:e_commerce/pages/home/main_screen.dart';
 import 'package:e_commerce/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../auth/sign_in_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List pages = [
     MainScreen(),
-    SignUpPage(),
+    SignInPage(),
     CartHistory(),
     AccountPage(),
   ];

@@ -26,9 +26,9 @@ class MainPage extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Food Delivery',
-            home: SignInPage(),
-            //initialRoute: RouteHelper.getSplashPage(),
-            //getPages: RouteHelper.routes,
+            //home: SignInPage(),
+            initialRoute: RouteHelper.getSplashPage(),
+            getPages: RouteHelper.routes,
           );
         },
       );
