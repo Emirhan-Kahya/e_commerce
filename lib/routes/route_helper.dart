@@ -14,20 +14,27 @@ class RouteHelper {
   static const String popularFood = "/popular-food";
   static const String recommendedFood = "/recommended-food";
   static const String cartPage = "/cart-page";
-  static const String loginPage = "/login-page";
-
+  static const String signInPage = "/sign-in";
 
   static String getSplashPage() => '$splashPage';
   static String getInitial() => '$initial';
-  static String getPopularFood(int pageId, String page) => '$popularFood?pageId=$pageId&page=$page';
-  static String getRecommendedFood(int pageId, String page) => '$recommendedFood?pageId=$pageId&page=$page';
+  static String getPopularFood(int pageId, String page) =>
+      '$popularFood?pageId=$pageId&page=$page';
+  static String getRecommendedFood(int pageId, String page) =>
+      '$recommendedFood?pageId=$pageId&page=$page';
   static String getCartPage() => '$cartPage';
-  static String getLoginPage() => '$loginPage';
+  static String getSignInPage() => '$signInPage';
 
   static List<GetPage> routes = [
-    GetPage(name: loginPage, page: () => SignInPage()),
     GetPage(name: splashPage, page: () => SplashScreen()),
     GetPage(name: initial, page: () => HomeScreen()),
+    GetPage(
+      name: signInPage,
+      page: () {
+        return SignInPage();
+      },
+      transition: Transition.fade,
+    ),
     GetPage(
       name: popularFood,
       page: () {

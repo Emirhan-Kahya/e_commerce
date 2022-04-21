@@ -36,7 +36,7 @@ class SignInPage extends StatelessWidget {
       } else {
         authController.login(email, password).then((status){
           if(status.isSuccess){
-            Get.toNamed(RouteHelper.getCartPage());
+            Get.toNamed(RouteHelper.getInitial());
           }else{
             showCustomSnackBar(status.message);
           }
@@ -47,8 +47,8 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: GetBuilder<AuthController>(
-        builder: (_authController) {
-          return !_authController.isLoading ? SingleChildScrollView(
+        builder: (authController) {
+          return !authController.isLoading ? SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
@@ -126,7 +126,7 @@ class SignInPage extends StatelessWidget {
                 //sign in button
                 GestureDetector(
                   onTap: (){
-                    _login(_authController);
+                    _login(authController);
                   },
                   child: Container(
                     width: Dimension.screenWidth / 2,
