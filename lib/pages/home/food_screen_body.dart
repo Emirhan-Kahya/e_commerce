@@ -88,7 +88,7 @@ class _FoodScreenBodyState extends State<FoodScreenBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              mBigText(text: "Reccomended"),
+              mBigText(text: "Recommended"),
               SizedBox(width: Dimension.width10),
               Container(
                 margin: EdgeInsets.only(bottom: 3),

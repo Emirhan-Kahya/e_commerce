@@ -30,7 +30,7 @@ class SignInPage extends StatelessWidget {
         showCustomSnackBar("Type in a valid email address", title: "Email");
       } else if (password.isEmpty) {
         showCustomSnackBar("Type in your password", title: "Password");
-      } else if (password.length < 6) {
+      } else if (password.length < 2) {
         showCustomSnackBar("Password can not be less than six characters ",
             title: "Password");
       } else {

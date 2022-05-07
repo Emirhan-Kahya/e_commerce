@@ -18,7 +18,6 @@ class AuthController extends GetxController implements GetxService{
         late ResponseModel responseModel;
         if(response.statusCode == 200){
             authRepo.saveUserToken(response.body["token"]);
-            print(response.body["token"]);
             responseModel = ResponseModel(true, response.body["token"]);
         }else{
             responseModel = ResponseModel(false, response.statusText!);
@@ -36,8 +35,11 @@ class AuthController extends GetxController implements GetxService{
         late ResponseModel responseModel;
         if(response.statusCode == 200){
             authRepo.saveUserToken(response.body["token"]);
+            print(response.body["token"]);
             responseModel = ResponseModel(true, response.body["token"]);
-        }else{
+        }
+
+        else{
             responseModel = ResponseModel(false, response.statusText!);
         }
         _isLoading = false;
@@ -51,5 +53,9 @@ class AuthController extends GetxController implements GetxService{
 
     bool userLoggedIn(){
         return authRepo.userLoggedIn();
+    }
+
+    bool clearCharedData(){
+        return authRepo.clearSharedData();
     }
 }

@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
             //slider
             Expanded(
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 child: FoodScreenBody(),
               ),
             ),
